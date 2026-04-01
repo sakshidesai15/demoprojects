@@ -1,26 +1,51 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
   
-  --color-primary: #1E3A8A;
-  --color-secondary: #16A34A;
-  --color-accent: #F97316;
-  --color-beige: #FAFAF9;
-  --color-beige-soft: #FAF7F2;
-  --color-green-soft: #F0FDF4;
+  --color-primary: #0B1120;
+  --color-secondary: #3B82F6;
+  --color-accent: #22C55E;
+  --color-cta: #F97316;
 }
 
 @layer base {
   body {
-    @apply bg-beige-soft text-slate-900 font-sans antialiased;
+    @apply bg-[#0B1120] text-gray-300 font-sans antialiased selection:bg-blue-500/30 selection:text-blue-200;
   }
-  
-  h1, h2, h3, h4 {
-    @apply font-display font-bold tracking-tight text-primary;
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white font-bold tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;700;800&display=swap');
+/* Custom Utilities */
+.glass {
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+}
+
+.glass-hover {
+  @apply hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300;
+}
+
+.text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500;
+}
+
+.section-padding {
+  @apply py-24 md:py-32;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
