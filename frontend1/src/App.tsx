@@ -13,6 +13,13 @@ import {
   useLocation
 } from "react-router-dom";
 import { useEffect } from "react";
+import img1 from "./assets/1.jpeg";
+import img2 from "./assets/2.jpeg";
+import img3 from "./assets/3.jpeg";
+import img4 from "./assets/4.jpeg";
+import img5 from "./assets/5.jpeg";
+import img6 from "./assets/6.jpeg";
+import img7 from "./assets/7.jpeg";
 import { 
   Briefcase, 
   Users, 
@@ -33,14 +40,23 @@ import {
   Globe2
 } from "lucide-react";
 
+const SITE_NAME = "Maipak and Thaballei Foundation";
+const SITE_SHORT_NAME = "Maipak & Thaballei";
+const DISPLACEMENT_CAPTION =
+  "Thousands of people displaced due to the violence erupted since 3rd May 2023 due to the Meitei and Kuki conflict, and around 50 thousand people are still living in relief camps.";
+const FOOD_SHELTER_CAPTION =
+  "Provided food and shelter to those displaced from their houses on 3rd May 2023, helping families survive the crisis with dignity and care.";
+const FIELD_SUPPORT_CAPTION =
+  "Field support for families displaced by the violence of 3rd May 2023, with identities protected to respect privacy and dignity.";
+
 // --- Data ---
 
 const PROGRAMS_DATA = [
   {
     id: "rehabilitation-through-jobs",
-    title: "Rehabilitation through Jobs",
-    shortText: "We connect displaced individuals with employment opportunities, helping them regain financial independence and rebuild their confidence. Our network of partner employers ensures fair wages and supportive environments.",
-    detailedText: "Our job rehabilitation program is designed to bridge the gap between crisis and stability. We work closely with local businesses to identify roles that are suitable for individuals who have been displaced by violence. Beyond just placement, we provide ongoing support to both the employee and the employer to ensure a successful long-term integration. This program has proven to be a cornerstone of our mission, as financial independence is often the first step toward emotional and social recovery. We also provide initial workplace orientation and cultural sensitivity training for employers to foster a truly inclusive environment.",
+    title: "Livelihood Support for IDPs",
+    shortText: "We create livelihood opportunities for internally displaced people in Manipur, helping families affected by the 3rd May 2023 violence move toward stability and dignity.",
+    detailedText: "Our livelihood program is designed to bridge the gap between displacement and self-reliance. We work with communities, local employers, and partner organizations to identify practical income opportunities for internally displaced people, especially those living in relief camps. Beyond job placement, we provide ongoing support, orientation, and community-based follow-up to help families settle into sustainable work. The goal is not only income, but also confidence, routine, and a pathway toward a self-reliant future.",
     impact: "Over 400 individuals successfully placed in long-term employment within the last year, with a 92% retention rate after 12 months.",
     benefits: [
       "Immediate financial independence and stability", 
@@ -68,12 +84,12 @@ const PROGRAMS_DATA = [
   },
   {
     id: "women-empowerment",
-    title: "Women Empowerment & Livelihood",
-    shortText: "Empowering women, particularly widows, through sustainable employment in manufacturing essential hygiene products like sanitary pads and wipes.",
-    detailedText: "Women are often the most affected by displacement and violence, yet they are also the most powerful agents of change. Our program now focuses on providing dignified employment to widows and vulnerable women by setting up local manufacturing units for sanitary pads and wipes. We provide comprehensive training in production, quality control, and business management. This not only creates stable income but also addresses critical hygiene needs within displaced communities, allowing these women to become financially independent leaders. Our program also includes workshops on financial literacy, legal rights, and health awareness.",
+    title: "Women-Run Family Livelihood",
+    shortText: "We prioritize women-headed and women-run families among internally displaced people by creating dignified employment and income-generating work.",
+    detailedText: "Women in displaced communities often carry the heaviest burden of rebuilding a home, caring for children, and finding income after crisis. This program focuses on providing dignified employment to women-run families through local livelihood units, skill-building, and support for essential community products and services. We provide training in production, quality control, and small-business skills so families can move from emergency dependence toward long-term self-reliance. The program also supports financial literacy, health awareness, and confidence-building for women leaders.",
     impact: "Supported over 500 women through our manufacturing units, producing 100,000+ hygiene kits and benefiting over 2,500 family members.",
     benefits: [
-      "Economic autonomy and dignified income for widows", 
+      "Economic autonomy and dignified income for women from displaced families", 
       "Leadership skills and community representation", 
       "Production of essential hygiene products for relief camps", 
       "Improved family stability and child well-being",
@@ -98,14 +114,14 @@ const PROGRAMS_DATA = [
   },
   {
     id: "educational-scholarships",
-    title: "Educational Scholarships (Manipur Crisis)",
-    shortText: "Providing dedicated educational scholarships and holistic support to students affected by the Manipur violence, ensuring their future remains bright.",
-    detailedText: "Education is the most powerful tool we have to break the cycle of violence and poverty. Our scholarship program has expanded to specifically support children and youth affected by the Manipur crisis. We provide comprehensive support that goes beyond just tuition; we cover books, uniforms, and boarding costs, while providing trauma-informed counseling to help students overcome the trauma of displacement. By keeping these students in school, we are protecting their childhoods and ensuring that the crisis does not halt their academic journey. We also facilitate parent-teacher meetings to ensure a holistic support system for every student.",
-    impact: "Currently supporting 550 students, including 200 victims of the Manipur violence, with a 98% school retention rate.",
+    title: "Education Support for Displaced Children",
+    shortText: "Providing educational support and holistic care to children from internally displaced families affected by the Manipur violence.",
+    detailedText: "Education is one of the strongest ways to protect a child's future during displacement. Our education support program helps children and youth from internally displaced families by covering learning essentials and offering holistic assistance that reduces the strain on parents. The aim is to keep children connected to school and learning while their families rebuild stability. We also work closely with caregivers and community partners so the support feels practical, local, and consistent.",
+    impact: "Currently supporting 550 children from displaced families, with a 98% school retention rate.",
     benefits: [
       "Uninterrupted learning in safe, supportive environments", 
       "Trauma-informed support and psychological care", 
-      "Full coverage of tuition, materials, and boarding", 
+      "Support for school materials and learning needs", 
       "Brighter futures for the next generation of leaders",
       "Reduced risk of child labor and exploitation"
     ],
@@ -127,7 +143,7 @@ const SocialShare = ({ title, url }: { title: string, url?: string }) => {
   const shareUrl = url || window.location.href;
   
   const handleShare = (platform: string) => {
-    const text = `Check out this amazing work by Hope & Rebuild NGO: ${title}`;
+    const text = `Check out this amazing work by ${SITE_NAME}: ${title}`;
     let link = "";
     
     switch (platform) {
@@ -186,10 +202,10 @@ const HomePage = () => (
           >
             <span className="text-xs font-bold text-secondary uppercase tracking-[0.4em]">Humanitarian NGO</span>
             <h1 className="text-5xl md:text-7xl text-primary leading-[1.1] font-display font-black tracking-tighter">
-              Restoring Hope.<br />Rebuilding Lives.
+              Restoring Hope.<br />Rebuilding Livelihoods.
             </h1>
             <p className="text-xl md:text-2xl text-slate-500 leading-relaxed font-light max-w-xl">
-              We stand with communities affected by violence, providing the tools needed for sustainable growth.
+              We stand with internally displaced people in Manipur, especially families affected by the violence of 3rd May 2023, and we create pathways to self-reliance.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <Link to="/contact" className="bg-accent text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition-all shadow-xl shadow-accent/20 active:scale-95 text-center">
@@ -220,7 +236,110 @@ const HomePage = () => (
         </div>
       </div>
     </section>
-    
+
+    {/* Relief Camp Gallery */}
+    <section className="py-32 bg-white border-y border-slate-100">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-14 space-y-4">
+          <span className="text-xs font-bold text-secondary uppercase tracking-[0.4em]">Manipur Crisis</span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-primary tracking-tighter">
+            Relief Camp Reality
+          </h2>
+          <p className="text-lg md:text-xl text-slate-500 leading-relaxed font-light">
+            {DISPLACEMENT_CAPTION}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { src: img1, alt: "Relief camp image 1" },
+            { src: img2, alt: "Relief camp image 2" },
+            { src: img3, alt: "Relief camp image 3" }
+          ].map((image, index) => (
+            <figure key={index} className="relative overflow-hidden rounded-[2.5rem] shadow-2xl group">
+              <img
+                src={image.src}
+                alt={`${image.alt}: ${DISPLACEMENT_CAPTION}`}
+                className="w-full h-[28rem] object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Field Support Gallery */}
+    <section className="py-32 bg-white border-y border-slate-100">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-14 space-y-4">
+          <span className="text-xs font-bold text-secondary uppercase tracking-[0.4em]">Field Response</span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-primary tracking-tighter">
+            Support in the Field
+          </h2>
+          <p className="text-lg md:text-xl text-slate-500 leading-relaxed font-light">
+            {FIELD_SUPPORT_CAPTION}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <figure className="relative overflow-hidden rounded-[2.5rem] shadow-2xl group">
+            <img
+              src={img6}
+              alt={`Field support image 6: ${FIELD_SUPPORT_CAPTION}`}
+              className="w-full h-[32rem] object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0">
+              <div className="absolute left-[18%] top-[24%] w-[19%] h-[22%] rounded-full bg-slate-200/75 backdrop-blur-3xl" />
+              <div className="absolute right-[14%] top-[22%] w-[18%] h-[22%] rounded-full bg-slate-200/75 backdrop-blur-3xl" />
+            </div>
+          </figure>
+
+          <figure className="relative overflow-hidden rounded-[2.5rem] shadow-2xl group">
+            <img
+              src={img7}
+              alt={`Field support image 7: ${FIELD_SUPPORT_CAPTION}`}
+              className="w-full h-[32rem] object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0">
+              <div className="absolute left-[26%] top-[22%] w-[18%] h-[20%] rounded-full bg-slate-200/75 backdrop-blur-3xl" />
+              <div className="absolute right-[19%] top-[24%] w-[18%] h-[20%] rounded-full bg-slate-200/75 backdrop-blur-3xl" />
+              <div className="absolute right-[7%] top-[18%] w-[12%] h-[18%] rounded-full bg-slate-200/70 backdrop-blur-3xl" />
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    {/* Food and Shelter Gallery */}
+    <section className="py-32 bg-beige-soft border-y border-slate-100">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-3xl mb-14 space-y-4">
+          <span className="text-xs font-bold text-secondary uppercase tracking-[0.4em]">Immediate Relief</span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-primary tracking-tighter">
+            Food and Shelter Support
+          </h2>
+          <p className="text-lg md:text-xl text-slate-500 leading-relaxed font-light">
+            {FOOD_SHELTER_CAPTION}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[
+            { src: img4, alt: "Food and shelter support image 4" },
+            { src: img5, alt: "Food and shelter support image 5" }
+          ].map((image, index) => (
+            <figure key={index} className="relative overflow-hidden rounded-[2.5rem] shadow-2xl group">
+              <img
+                src={image.src}
+                alt={`${image.alt}: ${FOOD_SHELTER_CAPTION}`}
+                className="w-full h-[28rem] object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Current Focus - Spotlight Section */}
     <section className="py-32 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
@@ -229,7 +348,7 @@ const HomePage = () => (
             <span className="text-xs font-bold text-accent uppercase tracking-[0.4em]">Active Missions</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-primary tracking-tighter">Current Focus</h2>
             <p className="text-lg text-slate-500 font-light leading-relaxed">
-              We are currently prioritizing two critical initiatives to address urgent humanitarian needs in our region.
+              We are currently prioritizing livelihood support for internally displaced families and employment for women-run households in relief camps.
             </p>
           </div>
           <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -237,11 +356,11 @@ const HomePage = () => (
               <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center">
                 <GraduationCap className="text-secondary w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-primary">Manipur Crisis Scholarships</h3>
+              <h3 className="text-2xl font-bold text-primary">IDP Livelihood Support</h3>
               <p className="text-slate-600 font-light leading-relaxed">
-                Dedicated support for students whose education was disrupted by the Manipur violence, covering all costs including boarding.
+                Practical livelihood assistance for internally displaced families affected by the Manipur violence since 3rd May 2023.
               </p>
-              <Link to="/programs/educational-scholarships" className="inline-flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all">
+              <Link to="/programs/rehabilitation-through-jobs" className="inline-flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all">
                 Learn more <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -249,9 +368,9 @@ const HomePage = () => (
               <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center">
                 <Briefcase className="text-accent w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-primary">Widows' Livelihood Units</h3>
+              <h3 className="text-2xl font-bold text-primary">Women-Run Family Employment</h3>
               <p className="text-slate-600 font-light leading-relaxed">
-                Empowering widows through employment in manufacturing essential hygiene products like sanitary pads and wipes.
+                Employment opportunities designed for women-run families so they can rebuild income and dignity.
               </p>
               <Link to="/programs/women-empowerment" className="inline-flex items-center gap-2 text-accent font-bold hover:gap-4 transition-all">
                 Learn more <ArrowRight className="w-4 h-4" />
@@ -323,8 +442,8 @@ const HomePage = () => (
     <section className="py-32 bg-primary text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">Global Partnerships</h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto">Collaborating with world-class organizations to scale our humanitarian efforts.</p>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">Community Partners</h2>
+          <p className="text-xl text-white/60 max-w-2xl mx-auto">Working with local organizations, relief camp leaders, and employers to expand livelihood support in Manipur.</p>
         </div>
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-32 opacity-40 hover:opacity-100 transition-opacity duration-700">
           <div className="flex items-center gap-3">
@@ -357,15 +476,15 @@ const HomePage = () => (
         <div className="space-y-32">
           {[
             { 
-              quote: "The sanitary pad manufacturing unit gave me more than just a job; it gave me my dignity back as a widow. I can now lead my own team and provide for my children.", 
+              quote: "The livelihood unit gave me more than a job; it gave me the strength to support my children and rebuild our life with dignity.", 
               author: "Amina K.", 
-              role: "Production Unit Lead",
+              role: "Women-Run Family Worker",
               image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop"
             },
             { 
-              quote: "When the violence in Manipur disrupted my son's education, we lost all hope. This scholarship was a lifeline, allowing him to continue his medical studies in a safe environment.", 
+              quote: "When the violence displaced our family, this support helped us find work and begin again with hope.", 
               author: "Samuel M.", 
-              role: "Parent of Manipur Scholarship Recipient",
+              role: "Internally Displaced Mother",
               image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop"
             }
           ].map((t, i) => (
@@ -447,7 +566,7 @@ const AboutPage = () => (
               Thousands of families displaced by violence struggle to rebuild their lives. Without access to jobs, education, or basic needs, survival becomes a daily challenge. Our mission is to bridge this gap and provide a path toward stability and dignity.
             </p>
             <p>
-              Founded on the belief that every individual deserves a second chance, Hope & Rebuild NGO was born out of a direct response to the growing humanitarian crises in our region. We saw that while immediate relief was vital, long-term recovery required a more structured, sustainable approach.
+              Founded on the belief that every individual deserves a second chance, {SITE_NAME} was born out of a direct response to the growing humanitarian crises in our region. We saw that while immediate relief was vital, long-term recovery required a more structured, sustainable approach.
             </p>
           </div>
 
@@ -478,11 +597,11 @@ const AboutPage = () => (
         
         <div className="space-y-48">
           {[
-            { year: "2015", title: "The Beginning", desc: "Hope & Rebuild was founded by a small group of volunteers in response to a regional displacement crisis. We started with a single relief camp, providing basic necessities to 50 families.", image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" },
+            { year: "2015", title: "The Beginning", desc: `${SITE_NAME} began with a small group of volunteers serving families affected by displacement and violence. We started with a single relief camp, providing basic necessities to 50 families.`, image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" },
             { year: "2018", title: "Expanding Reach", desc: "We launched our first vocational training center, helping 100 individuals find employment in its first year. This marked our shift from immediate relief to long-term rehabilitation.", image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop" },
-            { year: "2021", title: "Global Recognition", desc: "Received international awards for our innovative approach to community-led rehabilitation. Our model was adopted by several global NGOs as a best practice for sustainable aid.", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" },
-            { year: "2025", title: "A New Chapter", desc: "Expanded our operations to four major regions, impacting over 1,000 lives annually. We are now focused on scaling our digital literacy and women's empowerment programs.", image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070&auto=format&fit=crop" },
-            { year: "2026", title: "Crisis Response", desc: "Launched dedicated scholarship funds for Manipur violence victims and established our first women-led manufacturing units for essential hygiene products, providing livelihoods to hundreds of widows.", image: "https://images.unsplash.com/photo-1513258496099-48168024adb0?q=80&w=2070&auto=format&fit=crop" }
+            { year: "2021", title: "Strengthening Support", desc: "We expanded community-led assistance and practical support for families living through prolonged displacement.", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" },
+            { year: "2025", title: "Livelihood Focus", desc: "We deepened our women-run family employment efforts and livelihood support across relief camps and nearby communities.", image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070&auto=format&fit=crop" },
+            { year: "2026", title: "Atma Nirbhar Mission", desc: "Our work now centers on self-reliance, guided by Atma Nirbhar Bharat, Beti Bachao Beti Padhao, and Sabka Saath Sabka Vikas.", image: "https://images.unsplash.com/photo-1513258496099-48168024adb0?q=80&w=2070&auto=format&fit=crop" }
           ].map((item, i) => (
             <motion.div 
               key={i}
@@ -522,8 +641,8 @@ const AboutPage = () => (
                 <Globe2 className="text-secondary w-10 h-10" />
               </div>
               <h3 className="text-4xl md:text-6xl font-display font-bold text-primary mb-8">Our Vision</h3>
-              <p className="text-xl md:text-2xl text-slate-500 leading-relaxed font-light">
-                A world where every community displaced by violence has the resources, skills, and support needed to rebuild a life of dignity.
+            <p className="text-xl md:text-2xl text-slate-500 leading-relaxed font-light">
+              A world where every displaced family in Manipur has the resources, skills, and support needed to rebuild a life of dignity.
               </p>
             </div>
             <div className="w-full md:w-1/2">
@@ -544,7 +663,7 @@ const AboutPage = () => (
               </div>
               <h3 className="text-4xl md:text-6xl font-display font-bold text-primary mb-8">Our Mission</h3>
               <p className="text-xl md:text-2xl text-slate-500 leading-relaxed font-light">
-                To provide sustainable humanitarian impact through structured programs in job rehabilitation and community empowerment.
+                To provide sustainable humanitarian impact through structured programs in livelihood creation, women-run family employment, and support for internally displaced people.
               </p>
             </div>
             <div className="w-full md:w-1/2">
@@ -568,7 +687,7 @@ const AboutPage = () => (
                 {[
                   { title: "Dignity for all", desc: "Every individual deserves respect and the opportunity to thrive." },
                   { title: "Sustainable impact", desc: "We build solutions that last long after we leave." },
-                  { title: "Community ownership", desc: "Local leaders drive the change they want to see." },
+                  { title: "Community ownership", desc: "Local displaced communities help shape the support they receive." },
                   { title: "Radical transparency", desc: "We are accountable to our donors and the communities we serve." }
                 ].map((v, i) => (
                   <li key={i} className="flex items-start gap-6">
@@ -774,9 +893,9 @@ const ProgramsPage = () => (
           
           <div className="space-y-64">
             {[
-              { title: "Donate", desc: "Financial contributions directly fund our programs and infrastructure. Your support allows us to provide immediate relief and long-term rehabilitation.", icon: Heart, color: "bg-accent/10 text-accent", image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" },
-              { title: "Volunteer", desc: "Share your skills and time to support our field operations. We are always looking for passionate individuals to help with education and community building.", icon: Users, color: "bg-secondary/10 text-secondary", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" },
-              { title: "Partner", desc: "Organizations can partner with us for larger-scale impact. We collaborate with corporations and other NGOs to scale our humanitarian efforts globally.", icon: Globe2, color: "bg-primary/10 text-primary", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" }
+              { title: "Donate", desc: "Financial contributions directly fund livelihood programs, emergency support, and women-run family employment opportunities.", icon: Heart, color: "bg-accent/10 text-accent", image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" },
+              { title: "Volunteer", desc: "Share your skills and time to support our field operations. We are always looking for people to help with livelihoods, outreach, and community building.", icon: Users, color: "bg-secondary/10 text-secondary", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" },
+              { title: "Partner", desc: "Organizations can partner with us to scale livelihood support, women-run family employment, and relief camp assistance in Manipur.", icon: Globe2, color: "bg-primary/10 text-primary", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" }
             ].map((way, i) => (
               <motion.div 
                 key={i}
@@ -827,16 +946,19 @@ const ProgramDetailPage = () => {
   return (
     <div className="flex flex-col bg-beige-soft">
       {/* Hero Header */}
-      <section className="py-32 md:py-48 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src={program.image} alt={program.title} className="w-full h-full object-cover" />
+      <section className="relative py-28 md:py-40 bg-slate-950 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={program.image} alt={program.title} className="w-full h-full object-cover scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-primary/58 to-slate-950/35" />
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <Link to="/programs" className="inline-flex items-center gap-4 text-white/50 hover:text-white transition-colors mb-12 text-xl font-bold">
+          <Link to="/programs" className="inline-flex items-center gap-4 text-white/80 hover:text-white transition-colors mb-12 text-xl font-bold">
             <ArrowRight className="w-6 h-6 rotate-180" /> Back to all programs
           </Link>
-          <h1 className="text-6xl md:text-9xl font-black leading-tight tracking-tighter mb-8">{program.title}</h1>
-          <p className="text-2xl md:text-3xl text-white/70 font-light max-w-3xl leading-relaxed">
+          <h1 className="text-5xl md:text-8xl font-black leading-[0.95] tracking-tighter mb-8 text-white max-w-4xl">
+            {program.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/88 font-light max-w-3xl leading-relaxed">
             {program.shortText}
           </p>
         </div>
@@ -927,7 +1049,7 @@ const ImpactPage = () => (
             THE MEASURE<br />OF HOPE.
           </h1>
           <p className="text-xl md:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed">
-            Behind every statistic is a story of resilience, a family rebuilt, and a future reclaimed from the shadows of crisis.
+            Behind every statistic is a family displaced by the 3rd May 2023 violence, a livelihood restored, and a future reclaimed through dignity.
           </p>
         </motion.div>
       </div>
@@ -947,9 +1069,9 @@ const ImpactPage = () => (
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
           {[
-            { value: "1,542", label: "Lives Restored", sub: "Direct beneficiaries in 2025-26", trend: "+12% from last year" },
-            { value: "550", label: "Students Funded", sub: "Manipur Crisis Scholarships", trend: "Goal: 1,000 students" },
-            { value: "12", label: "Livelihood Units", sub: "Widow-led manufacturing centers", trend: "3 new units in Q1" }
+            { value: "1,542", label: "Lives Supported", sub: "Internally displaced people reached in 2025-26", trend: "+12% from last year" },
+            { value: "50k+", label: "People in Relief Camps", sub: "Estimated displaced population in Manipur", trend: "Ongoing crisis response" },
+            { value: "12", label: "Livelihood Units", sub: "Women-run family employment centers", trend: "3 new units in Q1" }
           ].map((stat, i) => (
             <motion.div 
               key={i}
@@ -988,8 +1110,8 @@ const ImpactPage = () => (
           <div className="flex flex-col md:flex-row justify-between items-end gap-8">
             <div className="space-y-3">
               <span className="text-xs font-bold text-accent uppercase tracking-[0.3em]">Urgent Mission</span>
-              <h2 className="text-4xl font-display font-bold text-primary tracking-tight">Manipur Scholarship Fund</h2>
-              <p className="text-slate-500 font-light max-w-md">Providing boarding, education, and trauma care for students displaced by violence.</p>
+              <h2 className="text-4xl font-display font-bold text-primary tracking-tight">Manipur IDP Livelihood Fund</h2>
+              <p className="text-slate-500 font-light max-w-md">Providing livelihood support, employment pathways, and women-run family assistance for displaced communities.</p>
             </div>
             <div className="text-right">
               <span className="text-5xl font-mono font-black text-primary">55%</span>
@@ -1010,19 +1132,19 @@ const ImpactPage = () => (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pt-4">
             <div>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Target</p>
-              <p className="text-2xl font-bold text-primary">$250,000</p>
+              <p className="text-2xl font-bold text-primary">INR 2.5 Cr</p>
             </div>
             <div>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Raised</p>
-              <p className="text-2xl font-bold text-secondary">$137,500</p>
+              <p className="text-2xl font-bold text-secondary">INR 1.38 Cr</p>
             </div>
             <div>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Students</p>
-              <p className="text-2xl font-bold text-primary">550/1000</p>
+              <p className="text-2xl font-bold text-primary">50k+</p>
             </div>
             <div>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Days Left</p>
-              <p className="text-2xl font-bold text-accent">42 Days</p>
+              <p className="text-2xl font-bold text-accent">Ongoing</p>
             </div>
           </div>
 
@@ -1044,7 +1166,7 @@ const ImpactPage = () => (
             <h2 className="text-5xl md:text-8xl font-display font-bold text-primary tracking-tighter leading-none">Human<br />Transformation</h2>
           </div>
           <p className="text-xl text-slate-400 font-light max-w-xs leading-relaxed">
-            Moving beyond immediate relief to sustainable rehabilitation and restored dignity.
+            Moving beyond immediate relief to sustainable livelihoods and restored dignity.
           </p>
         </div>
 
@@ -1052,17 +1174,17 @@ const ImpactPage = () => (
           {[
             {
               title: "Amina's Leadership",
-              role: "Widow & Production Lead",
-              text: "After losing her husband and home, Amina found a new purpose in our women-led manufacturing unit. She now leads a team of 10 widows making essential sanitary pads and wipes, earning a dignified livelihood while supporting her children's education.",
+              role: "Women-Run Family Leader",
+              text: "After losing her husband and home, Amina found a new purpose in our livelihood unit. She now leads a team of 10 women from displaced families, earning a dignified income while supporting her children.",
               image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop",
               quote: "I am no longer a victim of my circumstances. I am a provider for my community."
             },
             {
               title: "David's Second Chance",
-              role: "Manipur Scholarship Recipient",
-              text: "Young David's education was abruptly halted by the violence in Manipur. Through our dedicated scholarship fund, he is now back in a safe classroom, excelling in his studies and dreaming of becoming a doctor to serve his community.",
+              role: "Internally Displaced Youth",
+              text: "Young David's life was disrupted by the violence in Manipur. Through community support and livelihood assistance for his family, he is now able to continue his studies with renewed hope.",
               image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop",
-              quote: "Hope & Rebuild didn't just pay my fees; they gave me my future back."
+              quote: `${SITE_NAME} didn't just pay my fees; they gave me my future back.`
             }
           ].map((story, i) => (
             <motion.div 
@@ -1199,12 +1321,12 @@ const ImpactPage = () => (
             </div>
             <h3 className="text-3xl font-bold text-primary">Rigorous Field Audits</h3>
             <p className="text-xl text-slate-500 font-light leading-relaxed">
-              Our team conducts monthly on-site visits to every manufacturing unit and scholarship school. We don't just look at spreadsheets; we talk to the people on the ground to understand the nuances of their progress.
+              Our team conducts monthly on-site visits to every livelihood unit and relief location. We don't just look at spreadsheets; we talk to the people on the ground to understand the nuances of their progress.
             </p>
           </div>
           <div className="bg-primary text-white p-12 rounded-[3rem] space-y-8 flex flex-col justify-end">
             <h3 className="text-3xl font-bold">98%</h3>
-            <p className="text-lg text-white/60 font-light">School retention rate for our scholarship recipients across all regions.</p>
+            <p className="text-lg text-white/60 font-light">Employment continuity for families supported through livelihood programs.</p>
           </div>
           <div className="bg-green-soft p-12 rounded-[3rem] space-y-8">
             <h3 className="text-3xl font-bold text-primary">Income Tracking</h3>
@@ -1231,24 +1353,24 @@ const ImpactPage = () => (
       </div>
     </section>
 
-    {/* Global Reach - Interactive Concept */}
+    {/* Local Reach - Interactive Concept */}
     <section className="py-48 bg-beige-soft overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-24 items-center">
           <div className="w-full lg:w-1/2 space-y-12">
             <div className="space-y-4">
               <span className="text-xs font-bold text-secondary uppercase tracking-[0.4em]">Our Footprint</span>
-              <h2 className="text-5xl md:text-8xl font-display font-black text-primary mb-8 tracking-tighter leading-none">Global<br />Reach</h2>
+              <h2 className="text-5xl md:text-8xl font-display font-black text-primary mb-8 tracking-tighter leading-none">Local<br />Impact</h2>
             </div>
             <p className="text-xl md:text-2xl text-slate-500 leading-relaxed font-light">
-              From local crisis response in Manipur to sustainable livelihood units across the region.
+              From crisis response in Manipur to sustainable livelihood support for internally displaced families across relief camps.
             </p>
             <div className="grid grid-cols-2 gap-8">
               {[
-                { region: "Manipur Zone", impact: "200+ Students", status: "Active Relief" },
+                { region: "Relief Camps", impact: "50k+ People", status: "Active Response" },
                 { region: "Livelihood Units", impact: "12 Centers", status: "Scaling" },
-                { region: "South Asia", impact: "30k+ People", status: "Sustainable" },
-                { region: "East Africa", impact: "45k+ People", status: "Active Projects" }
+                { region: "Women-Run Families", impact: "500+ Families", status: "Employment Focus" },
+                { region: "Manipur", impact: "Ongoing Support", status: "Community Led" }
               ].map((loc, i) => (
                 <motion.div 
                   key={i}
@@ -1284,7 +1406,7 @@ const ImpactPage = () => (
                   <Globe2 className="w-32 h-32 text-secondary mx-auto opacity-40" />
                 </motion.div>
                 <h3 className="text-4xl font-display font-bold text-primary">Connecting<br />Communities</h3>
-                <p className="text-xl text-slate-500 font-light leading-relaxed">Our network spans across borders, bringing hope to the most remote corners of the world.</p>
+                <p className="text-xl text-slate-500 font-light leading-relaxed">Our network works closest to the people affected, bringing livelihood support to relief camps and displaced neighborhoods.</p>
               </div>
             </div>
           </div>
@@ -1309,10 +1431,10 @@ const ImpactPage = () => (
           
           <div className="space-y-32">
             {[
-              { year: "2015", title: "The Beginning", desc: "Hope & Rebuild was founded with a mission to provide immediate relief in crisis zones.", icon: Heart },
-              { year: "2018", title: "First Livelihood Unit", desc: "Launched our first widow-led manufacturing center, providing sustainable jobs to 20 women.", icon: Briefcase },
-              { year: "2021", title: "Clean Water Initiative", desc: "Installed 50 filtration systems across 10 relief camps, serving 5,000+ people.", icon: Droplets },
-              { year: "2024", title: "Manipur Crisis Response", desc: "Established the Scholarship Fund to support 1,000 students displaced by violence.", icon: GraduationCap }
+              { year: "2023", title: "Crisis Response", desc: `${SITE_NAME} expanded its work to support families displaced by the violence that erupted on 3rd May 2023.`, icon: Heart },
+              { year: "2024", title: "Livelihood Units", desc: "Launched women-run family employment units to create sustainable income opportunities.", icon: Briefcase },
+              { year: "2025", title: "Relief Camp Outreach", desc: "Worked with families living in relief camps and connected them to practical support and work opportunities.", icon: Droplets },
+              { year: "2026", title: "Atma Nirbhar Mission", desc: "Focused on building self-reliant livelihoods in line with Atma Nirbhar Bharat, Beti Bachao Beti Padhao, and Sabka Saath Sabka Vikas.", icon: GraduationCap }
             ].map((milestone, i) => (
               <motion.div 
                 key={i}
@@ -1390,8 +1512,8 @@ const ContactPage = () => (
         <div className="flex flex-col gap-40">
           {[
             { title: "Call Us", value: "+1 (555) 123-4567", icon: Phone, desc: "Our team is available Mon-Fri, 9am-5pm EST." },
-            { title: "Email Us", value: "contact@hopeandrebuild.org", icon: Mail, desc: "We aim to respond within 24 hours." },
-            { title: "Visit Us", value: "123 Humanity Way, Global City", icon: MapPin, desc: "Our headquarters are open for scheduled visits." }
+            { title: "Email Us", value: "contact@maipakandthaballei.org", icon: Mail, desc: "We aim to respond within 24 hours." },
+            { title: "Visit Us", value: "Manipur, India", icon: MapPin, desc: "Our team works with displaced communities and local partners on scheduled visits." }
           ].map((item, i) => (
             <motion.div 
               key={i}
@@ -1514,7 +1636,7 @@ export default function App() {
               <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
                 <Heart className="text-white w-5 h-5" />
               </div>
-              <span className="text-xl font-display font-extrabold text-primary tracking-tight">REBUILD<span className="text-secondary">.</span></span>
+              <span className="text-xl font-display font-extrabold text-primary tracking-tight">{SITE_SHORT_NAME}<span className="text-secondary">.</span></span>
             </Link>
             
             <div className="hidden lg:flex items-center gap-10">
@@ -1562,7 +1684,7 @@ export default function App() {
                   <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
                     <Heart className="text-white w-5 h-5" />
                   </div>
-                  <span className="text-xl font-display font-extrabold tracking-tight">REBUILD<span className="text-secondary">.</span></span>
+                  <span className="text-xl font-display font-extrabold tracking-tight">{SITE_SHORT_NAME}<span className="text-secondary">.</span></span>
                 </div>
                 <p className="text-white/40 leading-relaxed font-light">
                   Restoring dignity and rebuilding lives through sustainable humanitarian impact.
@@ -1612,7 +1734,7 @@ export default function App() {
             </div>
 
             <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-white/20 text-[10px] font-bold uppercase tracking-widest">
-              <p>© 2026 Hope & Rebuild NGO. All rights reserved.</p>
+              <p>© 2026 {SITE_NAME}. All rights reserved.</p>
               <div className="flex gap-12">
                 <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
