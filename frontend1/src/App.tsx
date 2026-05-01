@@ -288,26 +288,6 @@ const HomePage = () => (
               alt={`Field support image 6: ${FIELD_SUPPORT_CAPTION}`}
               className="w-full h-[32rem] object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 pointer-events-none">
-              <div
-                className="absolute left-[11%] top-[19%] w-[22%] h-[26%] rounded-full bg-transparent backdrop-blur-3xl"
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-              <div
-                className="absolute right-[13%] top-[20%] w-[21%] h-[25%] rounded-full bg-transparent backdrop-blur-3xl"
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-            </div>
           </figure>
 
           <figure className="relative overflow-hidden rounded-[2.5rem] shadow-2xl group">
@@ -316,35 +296,6 @@ const HomePage = () => (
               alt={`Field support image 7: ${FIELD_SUPPORT_CAPTION}`}
               className="w-full h-[32rem] object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 pointer-events-none">
-              <div
-                className="absolute left-[23%] top-[18%] w-[21%] h-[25%] rounded-full bg-transparent backdrop-blur-3xl"
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-              <div
-                className="absolute right-[17%] top-[21%] w-[22%] h-[26%] rounded-full bg-transparent backdrop-blur-3xl"
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-              <div
-                className="absolute right-[5%] top-[16%] w-[14%] h-[20%] rounded-full bg-transparent backdrop-blur-3xl"
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-            </div>
           </figure>
         </div>
       </div>
